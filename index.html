@@ -29,7 +29,15 @@
 	font-weight:bold;
 	font-style:italic;
 	color:#FABC00;
+	border:0.5em solid white;
+    -webkit-transition : border 1000ms ease-out;
+    -moz-transition : border 1000ms ease-out;
+    -o-transition : border 1000ms ease-out;
 }
+#memorytest div.instructions.alert {
+   border-color: green;
+}
+
 #memorytest div.words {
 	text-align:center;
 	font-size:1.5em;
@@ -41,6 +49,10 @@
 #memorytest div.timer {
 	text-align:right;
 	padding:10px;
+	color:black;
+}
+#memorytest div.timer.done {
+	color:green;
 }
 
 </style>
@@ -86,6 +98,7 @@ class MemoryTest {
 	buttons = "";
 	timer;
 	startTime = 0;
+	timeup;
 
 	constructor (numWords = 3, timerVal = 300) {
 		if (typeof this.rawWordList !== 'undefined' && this.rawWordList && this.rawWordList["Wordlist"]) {
@@ -180,29 +193,40 @@ console.log("start timer");
 		this.buttons = "<input type='button' class='stoptimer' value='Show Words Early'/>";
 		this.hideWords();
 		this.renderScreen();
-		this.timer = setInterval(this.renderScreen,1);
+		this.timeup = false;
+		this.timerDiv.classList.remove("done");
+
+		this.timer = setInterval(() => this.renderScreen(),1000);
 	}
 	stopTimer() {
 console.log("stop timer");
 		this.startTime = 0;
 		clearInterval(this.timer);
+		this.instructions = "These are the words you were asked to remember. How did you do?";
 		this.buttons = "<input type='button' class='starttest' value='Start Over'/>";
 		this.showWords();
 		this.renderScreen();
 	}
 	doneTimer() {
-console.log("done timer");
+//console.log("done timer");
 		this.instructions = "Repeat the words you recall, then click the button to reveal the words.";
 //future -- add space to guess words
 		this.buttons = "<input type='button' class='stoptimer' value='Reveal Words'/>";
+		this.timeup = true;
+		//flash the screen
+		this.instructionDiv.classList.add("alert");
+		this.timerDiv.classList.add("done");
+		setTimeout(() => this.instructionDiv.classList.remove("alert"),1000);
+		setTimeout(() => this.instructionDiv.classList.add("alert"),2000);
+		setTimeout(() => this.instructionDiv.classList.remove("alert"),3000);
 
 		this.renderScreen();
 	}
 	showTimer() {
 		if (this.startTime == 0) { return ""; }
 		var returntext = "";
-		var elapsed = Date.now() - this.startTime;
-		if (elapsed >= this.timerVal) {
+		var elapsed = parseInt((Date.now() - this.startTime)/1000);
+		if (elapsed >= this.timerVal && !this.timeup) {
 			this.doneTimer();
 		}
 		returntext = "" + elapsed + " seconds elapsed";
@@ -222,7 +246,7 @@ console.log("done timer");
 
 
 window.onload = (function() {
-	var test = new MemoryTest(3,500);
+	var test = new MemoryTest(3,10);
 });
 </script>
 
