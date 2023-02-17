@@ -29,7 +29,6 @@ body {
 	font-size:1.3em;
 	padding:0;
     height: 100vh;
-    height: 100%;
     overflow: auto;
     background-color:#fafafa;
 }
@@ -202,6 +201,13 @@ class MemoryTest {
 		this.buttonDiv = this.container.querySelector(".buttons");
 		this.wordDiv = this.container.querySelector(".words");
 		this.instructionDiv = this.container.querySelector(".instructions");
+
+        //adjust for header impeding on viewport
+        var hdiff = window.innerHeight - this.container.offsetHeight;
+//console.log(hdiff + " = " + window.innerHeight +" - "+this.container.offsetHeight);
+        if (hdiff > 0) {
+            this.buttonDiv.style.bottom = hdiff+"px";
+        }
 
 		this.startTest();
 	}
