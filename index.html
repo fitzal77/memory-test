@@ -18,18 +18,29 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
 <style>
+body {
+    background-color:#aaaaaa;
+}
 #memorytest {
+	position:relative;
 	max-width:500px;
-	margin:1em auto;
+	width:100%;
+	margin:0 auto;
 	font-size:1.3em;
-	padding:10px;
+	padding:0;
+    height: 100vh;
+    overflow: auto;
+    background-color:#fafafa;
+}
+#memorytest div {
+margin:0.5em 0.5em;
 }
 #memorytest div.instructions {
 	text-align:left;
 	font-weight:bold;
 	font-style:italic;
-	color:#FABC00;
-	border:0.5em solid white;
+	color:#0055AA;
+	border:0.5em solid transparent;
     -webkit-transition : border 1000ms ease-out;
     -moz-transition : border 1000ms ease-out;
     -o-transition : border 1000ms ease-out;
@@ -43,9 +54,58 @@
 	font-size:1.5em;
 }
 #memorytest div.buttons {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    box-sizing: border-box;
+    border:0;
+	padding-left:0;
+	padding-right:0;
+	margin-left:0;
+	margin-right:0;
 	text-align:center;
-	padding:10px;
 }
+#memorytest div.buttons input[type=button] {
+  background-image: linear-gradient(#33AAEE, #1177CC);
+  border: 1px solid #0066BB;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: block;
+  min-width: 30px;
+  overflow: visible;
+  padding: 4px 15px;
+  text-align: center;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  width:80%;
+  margin:0 auto;
+  height:3em;
+  max-height:25vh;
+
+}
+#memorytest div.buttons input[type=button]:disabled {
+  cursor: default;
+  opacity: .3;
+}
+
+#memorytest div.buttons input[type=button]:hover {
+  background-image: linear-gradient(#55AAFF, #1188DD);
+  border-color: #0077CC;
+  text-decoration: none;
+}
+
+#memorytest div.buttons input[type=button]:active {
+  background-image: linear-gradient(#3399CC, #0066CC);
+  border-color: #0055BB;
+  outline: none;
+}
+
+
 #memorytest div.timer {
 	text-align:right;
 	padding:10px;
@@ -168,21 +228,31 @@ class MemoryTest {
 	}
 
 	renderScreen() {
-		this.instructionDiv.innerHTML = this.instructions;
-		this.wordDiv.innerHTML = this.words;
-		this.buttonDiv.innerHTML = this.buttons;
+		if (this.instructionDiv.innerHTML != this.instructions) {
+		    this.instructionDiv.innerHTML = this.instructions;
+		    this.instructions = this.instructionDiv.innerHTML; //catch any auto formatting
+		}
+		if (this.wordDiv.innerHTML != this.words) {
+			this.wordDiv.innerHTML = this.words;
+			this.words = this.wordDiv.innerHTML; //catch any auto formatting
+		}
+		if (this.buttonDiv.innerHTML != this.buttons) {
+			this.buttonDiv.innerHTML = this.buttons;
+			this.buttons = this.buttonDiv.innerHTML; //catch any auto formatting
+
+            //add listeners
+            var b1 = this.buttonDiv.querySelector("input.starttimer");
+            if (b1) { b1.addEventListener("click",() => this.startTimer()); }
+            var b2 = this.buttonDiv.querySelector("input.stoptimer");
+            if (b2) { b2.addEventListener("click",() => this.stopTimer()); }
+            var b3 = this.buttonDiv.querySelector("input.starttest");
+            if (b3) { b3.addEventListener("click",() => this.startTest()); }
+		}
 		if (this.timer) {
 			this.timerDiv.innerHTML = this.showTimer();
 		} else {
 			this.timerDiv.innerHTML = "";
 		}
-		//add listeners
-		var b1 = this.buttonDiv.querySelector("input.starttimer");
-		if (b1) { b1.addEventListener("click",() => this.startTimer()); }
-		var b2 = this.buttonDiv.querySelector("input.stoptimer");
-		if (b2) { b2.addEventListener("click",() => this.stopTimer()); }
-		var b3 = this.buttonDiv.querySelector("input.starttest");
-		if (b3) { b3.addEventListener("click",() => this.startTest()); }
 
 	}
 
