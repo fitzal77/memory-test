@@ -2,4 +2,9 @@
 
 # Allow crawling of all content
 User-agent: *
-Disallow: *
+Allow: /
+Disallow: /.*
+Disallow: /*.gif$
+Disallow: /img/
+Disallow: /js/
+Disallow: /css/
