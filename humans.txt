@@ -14,3 +14,4 @@
     CSS3, HTML5
     Apache Server Configs, Modernizr, Normalize.css
     GitHub
+    <a target="_blank" href="https://icons8.com/icon/54723/make-decision">Make Decision</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>

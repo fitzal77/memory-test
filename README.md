@@ -1,11 +1,7 @@
 # Memory-test
-## Quick Links
-[Contributors](https://github.com/fitzal77/memory-test/graphs/contributors)
-| [Stars](https://github.com/fitzal77/memory-test/stargazers)
-| [Issues](https://github.com/fitzal77/memory-test/issues)
-
 ## License
-[GNU General Public License v3.0](https://github.com/fitzal77/memory-test/blob/main/LICENSE)
+[GNU General Public License v3.0](https://github.com/fitzal77/memory-test/blob/main/LICENSE)  
+[Make a Decision](https://icons8.com/icon/54723/make-decision) icon by [Icons8](https://icons8.com)
 
 ## Website Description
 Test your short-term recall. This is a quick procedure to check for cognitive impairment. 
@@ -25,3 +21,5 @@ The words in the list are a subset of the 5000 most commonly used English words,
 The chosen words are nouns, verbs, and adjectives, filtered by a list of swear words and words with a strongly negative connotation. 
 The list was further filtered for only non-proper words 4-10 characters in length with some of the more idiosyncratic words removed. 
 Some 3-letter words were added back in.   
+
+
