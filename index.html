@@ -28,7 +28,7 @@ body {
 	margin:0 auto;
 	font-size:1.3em;
 	padding:0;
-    height: 100vh;
+    /*height: 100vh;*/
     overflow: auto;
     background-color:#fafafa;
 }
@@ -54,16 +54,19 @@ margin:0.5em 0.5em;
 	font-size:1.5em;
 }
 #memorytest div.buttons {
+/*
     position:absolute;
     bottom:0;
     width:100%;
-    box-sizing: border-box;
-    border:0;
 	padding-left:0;
 	padding-right:0;
 	margin-left:0;
 	margin-right:0;
+*/
+    box-sizing: border-box;
+    border:0;
 	text-align:center;
+	margin-top:1em;
 }
 #memorytest div.buttons input[type=button] {
   background-image: linear-gradient(#33AAEE, #1177CC);
@@ -115,6 +118,10 @@ margin:0.5em 0.5em;
 	color:green;
 }
 
+#about {
+display: none;
+
+}
 </style>
 
 
@@ -122,12 +129,21 @@ margin:0.5em 0.5em;
 </head>
 
 <body>
+  <div id="about">
+    <h1>Memory Test</h1>
+    <desc>This 3-Word Recall Check is for...</desc>
+    <credits>
+      Web Developer: Mike FitzSimmons <br/>
+      <a target="_blank" href="https://icons8.com/icon/54723/make-decision">Make Decision</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+    </credits>
+  </div>
 
   <div id="memorytest" class="container">
 	<div class="instructions">A Three Word Recall Test to assess an individual's ability to remember and recall information in the short-term. This type of test is often used as a quick screening tool to evaluate an individual's cognitive function, particularly their ability to form and maintain new memories. The ability to recall information after a short delay is a key aspect of cognitive function and is important in many everyday activities. In clinical settings, the 3-word test can be a useful tool for assessing cognitive impairment or dementia, as these conditions often impact an individual's short-term memory.</div>
 	<div class="words"><img src="img/Loading_icon.gif"/></div>
 	<div class="buttons"></div>
 	<div class="timer"></div>
+    <img src="img/Loading_icon.gif"/>
   </div>
 
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
