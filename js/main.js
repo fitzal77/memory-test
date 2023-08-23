@@ -38,3 +38,11 @@ veil.addEventListener("click",() => closemenu());
         link.setAttribute('target', '_blank');
     });
 
+
+document.getElementById("clear-history").addEventListener("click",() => {
+    if (confirm("Are you sure you want to clear your history?")) {
+        localStorage.clear();
+    }
+});
+
+
