@@ -124,25 +124,101 @@ margin:0.5em 0.5em;
 	color:green;
 }
 
-#about {
-display: none;
-
+#veil {
+  display: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top:0;
+  left:0;
+  padding:0;
+  border:none;
+  z-index:98;
+  background-color:rgba(50, 50, 50, 0.5);
 }
-</style>
+#about {
+  display: none;
+  position: absolute;
+  width: 62%;
+  min-width:200px;
+  height:80%;
+  min-height:200px;
+  background:#FFF;
+  color:black;
+  /*box-shadow: 0px 0px 0px 5000px rgba(50, 50, 50, 0.5);*/
+  box-shadow: 3px 3px 15px 1px rgba(50, 50, 50, 1);
+  z-index:99;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y:scroll;
+  overflow-x:hidden;
+}
+#about>div {
+  margin-left:1em;
+  margin-right:1em;
+}
 
+#menu-button {
+  position: absolute;
+}
+.burger { /* menu button */
+  fill: #1177CC;
+  border:none;
+}
+.burger:hover {
+  fill: #2288DD;
+}
+button {
+  cursor: pointer;
+}
+#close-button {
+  position:absolute;
+  right:0;
+  margin:10px;
+}
+
+.show {
+  display:block !IMPORTANT;
+}
+
+a.external-link:after {
+  content: url('data:image/svg+xml;utf8,<svg width="10px" height="10px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g xmlns="http://www.w3.org/2000/svg" id="external-link"><path d="M36.026,20.058l-21.092,0c-1.65,0 -2.989,1.339 -2.989,2.989l0,25.964c0,1.65 1.339,2.989 2.989,2.989l26.024,0c1.65,0 2.989,-1.339 2.989,-2.989l0,-20.953l3.999,0l0,21.948c0,3.308 -2.686,5.994 -5.995,5.995l-28.01,0c-3.309,0 -5.995,-2.687 -5.995,-5.995l0,-27.954c0,-3.309 2.686,-5.995 5.995,-5.995l22.085,0l0,4.001Z"/><path d="M55.925,25.32l-4.005,0l0,-10.481l-27.894,27.893l-2.832,-2.832l27.895,-27.895l-10.484,0l0,-4.005l17.318,0l0.002,0.001l0,17.319Z"/></g></svg>');
+  fill:black;
+  vertical-align:text-top;
+  line-height: 12px;
+}
+
+
+</style>
 
   <meta name="theme-color" content="fafafa">
 </head>
 
 <body>
+  <div id="menu-button">
+    <button type="button" id="burger" class="burger"><svg viewBox="0 0 100 80" width="40" height="40">
+      <rect width="100" height="20"></rect>
+      <rect y="30" width="100" height="20"></rect>
+      <rect y="60" width="100" height="20"></rect>
+    </svg></button>
+  </div>
+  <div id="veil"></div>
   <div id="about">
-    <h1>Memory Test</h1>
-    <desc>A Three Word Recall Test to assess an individual's ability to remember and recall information in the short-term. This type of test is often used as a quick screening tool to evaluate an individual's cognitive function, particularly their ability to form and maintain new memories. The ability to recall information after a short delay is a key aspect of cognitive function and is important in many everyday activities. In clinical settings, the 3-word test can be a useful tool for assessing cognitive impairment or dementia, as these conditions often impact an individual's short-term memory.</desc>
-    <div class="credits">
-      Web Developer: Mike FitzSimmons <br/>
-      <a target="_blank" href="https://icons8.com/icon/54723/make-decision">Make Decision</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+    <div id="close-button"><button type="button" class="close">&#x2716;</button></div>
+    <div class="container">
+      <h1>Memory Test</h1>
+      <h2>About</h2>
+      <div class="description">A Three Word Recall Test to assess an individual's ability to remember and recall information in the short-term. This type of test is often used as a quick screening tool to evaluate an individual's cognitive function, particularly their ability to form and maintain new memories. The ability to recall information after a short delay is a key aspect of cognitive function and is important in many everyday activities. In clinical settings, the 3-word test can be a useful tool for assessing cognitive impairment or dementia, as these conditions often impact an individual's short-term memory.</div>
+      <h2>Credits</h2>
+      <div class="credits">
+        <p>Web Developer: Mike FitzSimmons | <a href="https://mstdn.social/@Fitz" rel="external noopener">@Fitz@mstdn.social</a> | <a href="https://twitter.com/evilfitzal" rel="external">@EvilFitzal</a></p>
+        <p><a rel="external" href="https://icons8.com/icon/54723/make-decision">Make Decision</a> icon by <a rel="external" href="https://icons8.com">Icons8</a></p>
+      </div>
     </div>
   </div>
+
+
 
   <div id="memorytest" class="container">
 	<div class="instructions">A Three Word Recall Test to assess an individual's ability to remember and recall information in the short-term. This type of test is often used as a quick screening tool to evaluate an individual's cognitive function, particularly their ability to form and maintain new memories. The ability to recall information after a short delay is a key aspect of cognitive function and is important in many everyday activities. In clinical settings, the 3-word test can be a useful tool for assessing cognitive impairment or dementia, as these conditions often impact an individual's short-term memory.</div>
